@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CİNEMA TİCKET RESERVED</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="ekran"></div>
+
+      <div class="row">
+        <div class="seat" id="A" onclick="col()"></div>
+        <div class="seat" id="A" onclick="col()"></div>
+        <div class="seat"id="A" onclick="col()"></div>
+        <div class="seat"id="A" onclick="col()"></div>
+        <div class="seat"id="A" onclick="col()"></div>
+        <div class="seat"id="A" onclick="col()"></div>
+        <div class="seat"id="A" onclick="col()"></div>
+        <div class="seat"id="A" onclick="col()"></div>
+      </div>
+      <div class="row">
+        <div class="seat"id="A" onclick="col()"></div>
+        <div class="seat"id="A" onclick="col()"></div>
+        <div class="seat"id="A" onclick="col()"></div>
+        <div class="seat"id="A" onclick="col()"></div>
+        <div class="seat"id="A" onclick="col()"></div>
+        <div class="seat"id="A" onclick="col()"></div>
+        <div class="seat"id="A" onclick="col()"></div>
+        <div class="seat"id="A"></div>
+      </div>
+      <div class="row">
+        <div class="seat"id="A" onclick="col()"></div>
+        <div class="seat"id="A" onclick="col()"></div>
+        <div class="seat"id="A" onclick="col()"></div>
+        <div class="seat"id="A" onclick="col()"></div>
+        <div class="seat"id="A" onclick="col()"></div>
+        <div class="seat"id="A" onclick="col()"></div>
+        <div class="seat"id="A" onclick="col()"></div>
+        <div class="seat"id="A" onclick="col()"></div>
+      </div>
+      <div class="row">
+        <div class="seat reserved"></div>
+        <div class="seat reserved"></div>
+        <div class="seat"id="A" onclick="col()"></div>
+        <div class="seat"id="A" onclick="col()"></div>
+        <div class="seat"id="A" onclick="col()"></div>
+        <div class="seat"id="A" onclick="col()"></div>
+        <div class="seat"id="A" onclick="col()"></div>
+        <div class="seat"id="A" onclick="col()"></div>
+      </div>
+      <div class="row">
+        <div class="seat"id="A" onclick="col()"></div>
+        <div class="seat"id="A" onclick="col()"></div>
+        <div class="seat"id="A" onclick="col()"></div>
+        <div class="seat"id="A" onclick="col()"></div>
+        <div class="seat"id="A" onclick="col()"></div>
+        <div class="seat"id="A" onclick="col()"></div>
+        <div class="seat"id="A" onclick="col()"></div>
+        <div class="seat"id="A" onclick="col()"></div>
+      </div>
+    </div>
+    <p  id="pq">Select the movie</p>
+    <div class="movie-list">
+      <select id="movie">
+        <option disabled>Movie list</option>
+        <option value="20">Leo</option>
+        <option value="22">project k</option>
+        <option value="25">Kunguva</option>
+        <option value="26">Salar</option>
+        <option value="28">Jawan</option>
+        <option value="30">Dream girl 2</option>
+      </select>
+    </div>
+
+    <ul class="info">
+      <li>
+        <div class="seat selected"></div>
+        <small>Selected</small>
+      </li>
+      <li>
+        <div class="seat reserved"></div>
+        <small>Reserved</small>
+      </li>
+      
+      <li>
+        <div class="seat"></div>
+        <small>Available</small>
+      </li>
+    </ul>
+    <p class="text">Total count:
+      <span id="count"></span><br>Total price:
+      <span id="amount"> </span> 
+    </p>
+
+    <script src="cinema.js"></script><a href="print.html">
+    <button style="color:red;">confirm booking</button></a>
+    <script>
+      function col()
+      {
+document.getElementById("A").style.backgroundColor="blue";
+      }
+      </script>
+  </body>
+</html>

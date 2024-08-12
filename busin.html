@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bus Ticket</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <!-- Stylesheet -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet" />
+    <link rel="stylesheet" href="busstyle.css">
+</head>
+
+<body>
+    <!--Header and Menu Section-->
+    <header class="container"> <button id="back" style="color: rgb(0, 153, 255);" onclick="index1.html" >BACK</button>
+        
+    </header>
+
+    <!--Booking Section-->
+    <main class="main-content container">
+
+        <div class="booking-content">
+            <h1 style="color: rgba(0, 255, 234, 0.555);">ESEC BUS</h1>
+            <p></p>
+        </div>
+
+
+        <div  id="bookingsection" class="booking-form">
+            <h3>Explore By Bus</h3>
+
+            <div class="inputs">
+                <div class="input-group">
+                    <label" for="">From</label>
+                    <input class="inp-style" type="text" name="" placeholder="SALEM" required="">
+                </div>
+                <div class="input-group">
+                    <label" for="">To</label>
+                    <input class="inp-style" type="text" name="" placeholder="ERODE" required="">
+                </div>
+            </div>
+
+            <div class="inputs">
+                <div class="input-group">
+                    <label" for="">Departure</label>
+                    <input class="inp-style" type="date" name="" required="">
+                </div>
+                <div class="input-group">
+                    <label for="">Return</label>
+                    <input class="inp-style" type="date" name="" required="">
+                </div>
+            </div>
+            <div class="inputs">
+                <div class="input-group f-class">
+                <div>
+                    <label for="">First Class (150RS)</label>
+                </div>
+                <div class="number-spinner input-group">
+                    <button id="case-decrement" class="btn btn-default"><i class="fas fa-minus"></i></button>
+                    <input id="case-count" type="text" class="form-control text-center" value="0"required="">
+                    <button id="case-increment" class="btn btn-default"><i class="fas fa-plus"></i></button>
+                </div>
+            </div>
+                <div class="input-group f-class">
+                    <div>
+                        <label for="">Economy (100RS)</label>
+                    </div>
+                    <div class="number-spinner input-group">
+                        <button id="case-decrease" class="btn btn-default"><i class="fas fa-minus"></i></button>
+                        <input id="case-counter" type="text" class="form-control text-center" value="0"required="">
+                        <button id="case-increase" class="btn btn-default"><i class="fas fa-plus"></i></button>
+                    </div>
+                </div>
+
+            </div>
+            <div class="calculations">
+                <div class="amount">
+                    <div class="left">
+                        <p>Subtotal</p>
+                    </div>
+                    <div class="right">
+                        <p id="total-price">0RS</p>
+                    </div>
+                </div>
+
+                <div class="amount">
+                    <div class="left">
+                        <p>Charge 10% VAT</p>
+                    </div>
+                    <div class="right">
+                        <p id="total-amount">0RS</p>
+                    </div>
+                </div>
+                <hr>
+                <div class="amount">
+                    <div class="left">
+                        <h4>Total</h4>
+                    </div>
+                    <div class="right">
+                        <p id="grand-total">0RS</p>
+                    </div>
+                </div>
+            </div><a href="print.html">
+            <button id="book-now" class="btn-style">Book Now</button>
+           </a>
+        </div>
+    </main>
+    <script>
+        document.getElementById("case-increment").addEventListener("click", function(){
+            handleProductChange(true);
+         });
+         document.getElementById("case-decrement").addEventListener("click", function(){
+            handleProductChange(false);
+         });
+         function handleProductChange(isIncrement){
+            const caseInput = document.getElementById("case-count");
+            const caseCount = parseInt(caseInput.value);
+            let caseNewCount = caseCount;
+            if(isIncrement == true){
+               caseNewCount = caseCount + 1;
+            }
+            if(isIncrement == false && caseCount > 0){
+               caseNewCount = caseCount - 1;
+            }
+            caseInput.value = caseNewCount;
+            const casetotal = caseNewCount * 59;
+            //document.getElementById("case-total").innerText = '$' + casetotal;
+            calculateTotal();
+         };
+
+
+         document.getElementById("case-increase").addEventListener("click", function(){
+            handleProductChangeTop(true);
+         });
+         document.getElementById("case-decrease").addEventListener("click", function(){
+            handleProductChangeTop(false);
+         });
+         function handleProductChangeTop(isIncrease){
+            const caseInputTop = document.getElementById("case-counter");
+            const caseCountTop = parseInt(caseInputTop.value);
+            let caseNewCountTop = caseCountTop;
+            if(isIncrease == true){
+               caseNewCountTop = caseCountTop + 1;
+            }
+            if(isIncrease == false && caseCountTop > 0){
+               caseNewCountTop = caseCountTop - 1;
+            }
+            caseInputTop.value = caseNewCountTop;
+            const caseTotalTop = caseNewCountTop * 1219;
+            //document.getElementById("case-total-top").innerText = '$' + caseTotalTop;
+           calculateTotal();
+         };
+
+         function calculateTotal(){
+            const caseInputTop = document.getElementById("case-counter");
+            const caseCountTop = parseInt(caseInputTop.value);
+
+            const caseInput = document.getElementById("case-count");
+            const caseCount = parseInt(caseInput.value);
+
+            const totalPrice = caseCountTop * 150 + caseCount * 100;
+            document.getElementById("total-price").innerText = '$' + totalPrice;
+
+            const tax = totalPrice * .1;
+            document.getElementById("total-amount").innerText = '$' + tax;
+
+            const grandTotal = totalPrice + tax;
+            document.getElementById("grand-total").innerText = '$' + grandTotal;
+         }
+         const BookNowBtn = document.getElementById("book-now");
+        BookNowBtn.addEventListener("click", function () {
+
+            const Bookingsection = document.getElementById("bookingsection");
+            Bookingsection.style.display = "none";
+            alert('Thanks for booking');
+        
+        
+        })
+
+
+
+
+    </script>
+
+    <!--Thank You-->
+</body>
+
+</html>
